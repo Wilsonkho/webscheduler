@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration {
 			$table->string('name');
 			$table->string('email')->unique();
 			$table->string('password', 60);
-			// $table->integer('position');
-			// $table->integer('groupid');
-			// $table->integer('unavailable')->nullable;
+			$table->enum('position',array('Manager','Assistant','Team Leader','General Employee'));
+			$table->integer('groupid')->nullable();
+			$table->integer('unavailable')->nullable();
 			$table->rememberToken();
 			$table->timestamps();
 		});

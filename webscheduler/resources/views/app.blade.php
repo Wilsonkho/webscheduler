@@ -39,6 +39,7 @@
 					<li><a href="{{ url('/') }}">Past Schedule</a></li>					
 					<li><a href="{{ url('/') }}">Request Days Off</a></li>
 					<li><a href="{{ url('/') }}">Schedule Planning</a></li>
+					<li><a href="{{ url('/employees') }}">Manage Employees</a></li>
 					@endif
 				</ul>
 

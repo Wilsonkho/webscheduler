@@ -8,7 +8,7 @@
 				<div class="panel-heading">Home</div>
 
 				<div class="panel-body">
-					Welcome {{ $user->name }}!
+					Welcome {{ $user }}!
 				</div>
 			</div>
 		</div>
