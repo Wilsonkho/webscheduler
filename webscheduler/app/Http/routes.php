@@ -13,10 +13,8 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-
-Route::get('employees','EmployeesController@index');
-Route::get('employees/create','EmployeesController@create');
-Route::post('employees', 'EmployeesController@store');
+Route::get('employees.create', 'EmployeesController@create');
+Route::resource('employees','EmployeesController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

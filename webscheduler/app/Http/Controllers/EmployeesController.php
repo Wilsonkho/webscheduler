@@ -3,7 +3,10 @@
 use DB;
 use App\User;
 use App\Http\Requests;
+use App\Http\Requests\CreateEmployeeRequest;
 use App\Http\Controllers\Controller;
+use Session;
+// use Illuminate\Http\Request;
 
 
 class EmployeesController extends Controller {
@@ -28,7 +31,7 @@ class EmployeesController extends Controller {
 	 */
 	public function create()
 	{
-		return view('create_employee');
+		return view('employeeCreate');
 	}
 
 	/**
@@ -40,7 +43,7 @@ class EmployeesController extends Controller {
 	{
 		$user = \Auth::user();
 		// $managerid = $user->get('id');
-		$input = Request::all();
+		$input = $request;
 		User::create([
 			'name' => $input['name'],
 			'email' => $input['email'],
@@ -72,7 +75,8 @@ class EmployeesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$employee = User::findOrFail($id);
+		return view('employeeEdit',compact('employee'));
 	}
 
 	/**
@@ -81,9 +85,11 @@ class EmployeesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Requests\CreateEmployeeRequest $request)
 	{
-		//
+		$employee = User::findOrFail($id);
+		$employee->update($request->all());
+		return redirect('employees');
 	}
 
 	/**
@@ -94,7 +100,13 @@ class EmployeesController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+
+        $employee = User::find($id);
+        $employee->delete();
+
+        // redirect
+        Session::flash('message', 'Employee successfully deleted!');
+        return redirect('employees');
 
 	}
 
