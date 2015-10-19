@@ -10,8 +10,13 @@
 				<div class="panel-body">
 					Welcome {{ $user }}!
 				</div>
+	
+				<div id='calendar'>
+				
+				</div>
 			</div>
 		</div>
 	</div>
+
 </div>
 @endsection
