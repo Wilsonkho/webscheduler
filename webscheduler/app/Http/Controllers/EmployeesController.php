@@ -20,10 +20,14 @@ class EmployeesController extends Controller {
 	{
 		$user = \Auth::user();
 		
-		$users = DB::table('users')->where('groupid',$user['id'])->get();
-		return view('employees')->with('users',$users);
+		$users = DB::table('users')
+			->where('groupid',$user['id'])
+			->orwhere('id',$user['id'])
+			->orderBy('name')
+			->get();
+		return view('employees')->with('user',$user)->with('users',$users);
 	}
-
+ 
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -51,8 +55,7 @@ class EmployeesController extends Controller {
 			'position' => $input['position'],
 			'groupid' => $user['id'],
 			]);
-		$users = DB::table('users')->where('groupid',$user['id'])->get();
-		return view('employees')->with('users',$users);
+		return redirect('employees');
 
 	}
 

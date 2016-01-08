@@ -1,16 +1,13 @@
-@extends('app')
+<html>
 
-@section('content')
-
-	<h1> Edit:  {!! $employee->name !!}</h1>
-
+	<body>
 	{!! Form::model($employee, ['method'=>'PATCH', 'action'=>['EmployeesController@update', $employee->id]]) !!}
 
 	@include ('employeeFormPartials', ['submitButtonText' => 'Apply Changes'])
 
 
 	@include ('errors/errorList')
+	</body>
 
 
-@stop
-
+</html>

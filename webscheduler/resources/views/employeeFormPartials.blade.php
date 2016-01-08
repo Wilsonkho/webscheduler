@@ -21,6 +21,3 @@
 		</div>
 
 	{!! Form::close() !!}
-		<form action="/employees">
-    		<input class="btn btn-primary form-control" type="submit" value="Cancel"> 
-		</form>

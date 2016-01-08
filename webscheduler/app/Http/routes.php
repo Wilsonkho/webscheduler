@@ -15,7 +15,9 @@ Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('employees.create', 'EmployeesController@create');
 Route::resource('employees','EmployeesController');
-
+Route::resource('calendar', 'CalendarController');
+Route::resource('dayOff', 'dayOffController');
+Route::resource('summary', 'SummaryController');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

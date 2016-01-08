@@ -1,5 +1,5 @@
 <?php namespace App\Services;
-
+use DB;
 use App\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
@@ -33,9 +33,10 @@ class Registrar implements RegistrarContract {
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
-			'position' => 0,
+			'position' => "Manager",
 
 		]);
+
 	}
 
 }

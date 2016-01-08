@@ -3,22 +3,25 @@
 <head>
 	
 	<link rel='stylesheet' href='/fullcalendar/dist/fullcalendar.css' />
-	<script src='/jquery/dist/jquery.min.js'></script>
+	<link rel="stylesheet" href="/jquery-ui-1.11.4.custom/jquery-ui.css">
+
+	<link rel='stylesheet' href='/jquery.timepicker.css' />
+
+
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<!-- 	// <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	// <script src='/jquery/jquery-ui.custom.min.js'></script> -->
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src='/jquery.timepicker.min.js'></script>
+
 	<script src='/moment/min/moment.min.js'></script>
 	<script src='/fullcalendar/dist/fullcalendar.js'></script>
+	<script src='/fullcalendar/dist/gcal.js'></script>
 
 
-	<script>
-		$(document).ready(function() {
-
-		    // page is now ready, initialize the calendar...
-
-		    $('#calendar').fullCalendar({
-		        // put your options and callbacks here
-		    })
-
-		});
-	</script>
+	@yield('Scripts')
 
 
 	<meta charset="utf-8">
@@ -29,17 +32,7 @@
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
-
-</head>
+	</head>
 <body>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -50,18 +43,17 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Web Scheduler</a>
+				<a class="navbar-brand" href="{{ url('/') }}">Web Scheduler</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					@if (Auth::check())
-					<li><a href="{{ url('/') }}">Current Schedule</a></li>					
-					<li><a href="{{ url('/') }}">Upcoming Schedule</a></li>					
-					<li><a href="{{ url('/') }}">Past Schedule</a></li>					
-					<li><a href="{{ url('/') }}">Request Days Off</a></li>
-					<li><a href="{{ url('/') }}">Schedule Planning</a></li>
+					@if (Auth::check())							
+					<li><a href="{{ url('/dayOff') }}">Request Days Off</a></li>
+					@if ($user->position == 'Manager')
+					<li><a href="{{ url('/summary') }}">Summary</a></li>			
 					<li><a href="{{ url('/employees') }}">Manage Employees</a></li>
+					@endif
 					@endif
 				</ul>
 
@@ -83,8 +75,5 @@
 
 	@yield('content')
 
-	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>
