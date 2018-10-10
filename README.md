@@ -1,6 +1,2 @@
 # webscheduler
-a web application to help employers schedule their staff
-
-Installation
-1. composer install
-2. 
+A web application to help employers schedule their staff and automate payable hours.
